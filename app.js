@@ -1,3 +1,32 @@
+var counter = 1
+btn_id = [];
+
+for (var i = 0; i < 10; i++) {
+	const imageOut = document.querySelector('.inner');
+	let div1 = document.createElement('div');
+	div1.classList = 'item';
+
+	let photo = document.createElement('img');
+	photo.src = '1.png';
+	photo.classList = 'img';
+	photo.alt = "Звезда";
+
+	let p = document.createElement('section');
+	p.textContent = "Цена: " + counter;
+	p.classList = 'section';
+
+	let btn = document.createElement('button');
+	btn.classList = 'btn';
+	btn_id[i] = "btn" + (i+1);
+	btn.id = btn_id[i];
+	btn.textContent = 'добавить';
+
+	div1.append(photo, p, btn);
+	imageOut.append(div1);
+	counter ++;
+}
+
+
 let tg = window.Telegram.WebApp;
 
 tg.expand();
@@ -14,7 +43,45 @@ let btn4 = document.getElementById("btn4");
 let btn5 = document.getElementById("btn5");
 let btn6 = document.getElementById("btn6");
 
+for (var i = 0; i < 10; i++) {
+	let btn_plus_minus = document.getElementById(btn_id[i]);
+	btn_plus_minus.addEventListener("click", function(){
+		const button = document.querySelector('.btn');
+		let btn_plus = document.createElement('button');
+		btn_plus.classList = 'btn';
+		btn_plus.textContent = '+';
+
+		let btn_minus = document.createElement('button');
+		btn_minus.classList = 'btn';
+		btn_minus.textContent = '-';
+		
+		button.append(btn_minus, " 1 ", btn_plus);
+		
+
+		if (tg.MainButton.isVisible) {
+			tg.MainButton.hide();
+		}
+		else {
+			tg.MainButton.setText("Вы выбрали товар" + (i+1));
+			item = (i+1);
+			tg.MainButton.show();
+		}
+	});
+}
+
+
 btn1.addEventListener("click", function(){
+	const button = document.querySelector('.btn');
+	let btn_plus = document.createElement('button');
+	btn_plus.classList = 'btn';
+	btn_plus.textContent = '+';
+
+	let btn_minus = document.createElement('button');
+	btn_minus.classList = 'btn';
+	btn_minus.textContent = '-';
+	
+	button.append(btn_minus, " 1 ", btn_plus);
+	
 	if (tg.MainButton.isVisible) {
 		tg.MainButton.hide();
 	}
@@ -24,6 +91,7 @@ btn1.addEventListener("click", function(){
 		tg.MainButton.show();
 	}
 });
+
 
 btn2.addEventListener("click", function(){
 	if (tg.MainButton.isVisible) {
