@@ -34,18 +34,18 @@ var count = 0;
 function pdf(a){
 	let p1 = document.querySelector('.p1');
 	count += a;
-	if (count % 8 == 0) {
-		count = 0
-	}
 	if (count >= 0 && (count == 2 || count == 3)){
 		let embed = document.querySelector('embed');
+		let iframe = document.querySelector('iframe');
 		embed.src = pdf_file[count].pdf;
-		
+		iframe.src = pdf_file[count].pdf;
 		p1.innerHTML = `Название (файл ${count+1} из 8):<br> <b>${pdf_file[count].name}</b> <br> 
 		Подробнее пройдите по ссылке: <a href="${pdf_file[count].source}">${pdf_file[count].name_source}</a>`;
 	} else if (count >= 0 && (count != 1 || count != 3)){
 		let embed = document.querySelector('embed');
+		let iframe = document.querySelector('iframe');
 		embed.src = pdf_file[count].pdf;
+		iframe.src = pdf_file[count].pdf;
 		p1.innerHTML = `Название (файл ${count+1} из 8):<br> <b>${pdf_file[count].name}</b>`;
 	}
 }
