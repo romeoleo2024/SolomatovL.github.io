@@ -24,3 +24,7 @@ body{
 	padding: px 20px;
 	background: rgb(154, 163, 197);
 }
+
+.btn {
+	width: 500px
+}
